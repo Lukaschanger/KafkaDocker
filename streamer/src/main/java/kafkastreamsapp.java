@@ -18,7 +18,7 @@ import org.apache.kafka.common.utils.Bytes;
 import java.util.Properties;
 import java.time.Duration;
 
-public class kafkastreamsapp {  // Changed class name to match file name
+public class kafkastreamsapp {  
     public static void main(String[] args) {
         // Set up the Kafka Streams configuration
         Properties config = new Properties();

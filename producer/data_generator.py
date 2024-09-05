@@ -11,7 +11,7 @@ logging.basicConfig(level=logging.INFO)
 
 # Define the machine information with 50 machines
 machines = [
-    {"machine_name": f"Machine {i}", "machine_id": f"M{i:03d}", "installation_date": f"2020-{(i % 12) + 1:02d}-{(i % 28) + 1:02d}"}
+    {"machine_id": f"M{i:03d}", "installation_date": f"2020-{(i % 12) + 1:02d}-{(i % 28) + 1:02d}"}
     for i in range(1, 51)  # Creates 50 machines
 ]
 
@@ -45,12 +45,12 @@ def generate_time_series_data(machine, status_last_update):
     
     data = {
         "machine_id": machine["machine_id"],
-        "machine_name": machine["machine_name"],  # Include machine_name
         "installation_date": machine["installation_date"],  # Include installation_date
         "timestamp": timestamp,
         "general": {
             "energy_consumption": energy_consumption,
-            "operating_minutes": operating_minutes
+            "operating_minutes": operating_minutes,
+            "status": status
         },
         "hydraulics": {
             "temperature": hydraulics_temp,
@@ -67,11 +67,7 @@ def generate_time_series_data(machine, status_last_update):
         }
     }
     
-    # Add status if updated
-    if status is not None:
-        data["general"]["status"] = status
-    
-    return data, status_last_update
+    return data, status_last_update  # Return both data and status_last_update
 
 
 if __name__ == "__main__":
