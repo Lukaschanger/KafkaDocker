@@ -86,7 +86,8 @@ You will need to run two separate Telegraf instances: one for the producer and o
 #### Telegraf for the Producer
 
 1. Ensure that the `telegraf.conf` file for the producer is properly configured in your local directory.
-2. Replace `<PRODUCER_CONF_PATH>` with the absolute path to the `telegraf.conf` file for the producer in the following command.
+2. Make sure to substitute the Token in the config with your generated Token (Login to your influx, you will find it in the Data section.)
+3. Replace `<PRODUCER_CONF_PATH>` with the absolute path to the `telegraf.conf` file for the producer in the following command.
 
 ```bash
 docker run -d   --name telegraf-producer   --network broker_kafka-network   -v "<PRODUCER_CONF_PATH>:/etc/telegraf/telegraf.conf:ro"   telegraf:latest
@@ -95,7 +96,8 @@ docker run -d   --name telegraf-producer   --network broker_kafka-network   -v "
 #### Telegraf for the Stream
 
 1. Ensure that the `telegraf.conf` file for the streamer is properly configured in your local directory.
-2. Replace `<STREAM_CONF_PATH>` with the absolute path to the `telegraf.conf` file for the streamer in the following command.
+2. Make sure to substitute the Token in the config with your generated Token (Login to your influx, you will find it in the Data section.)
+3. Replace `<STREAM_CONF_PATH>` with the absolute path to the `telegraf.conf` file for the streamer in the following command.
 
 ```bash
 docker run -d   --name telegraf-stream   --network broker_kafka-network   -v "<STREAM_CONF_PATH>:/etc/telegraf/telegraf.conf:ro"   telegraf:latest
